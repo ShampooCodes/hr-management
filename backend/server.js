@@ -6,6 +6,9 @@ const mongoose = require("mongoose")
 dotenv.config()
 const app = express()
 
+app.use(cors())
+app.use(express.json())
+
 app.use("/api/auth", require("./routes/authRoutes"))
 app.use("/api/employees", require("./routes/employeeRoutes"))
 app.use("/api/attendance", require("./routes/attendanceRoutes"))
