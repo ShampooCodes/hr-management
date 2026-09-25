@@ -1,12 +1,15 @@
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
 
 function App() {
   return (
-    <>
-      <div className='h-screen bg-slate-900 flex items-center justify-center'>
-        <h1 className='text-4xl font-bold text-pink-400'>HI hello</h1>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/employee" element={<EmployeeDashboard />} />
+    </Routes>
   )
 }
 export default App
