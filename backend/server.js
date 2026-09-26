@@ -16,6 +16,8 @@ app.use("/api/leaves", require("./routes/leaveRoutes"))
 app.use("/api/payroll", require("./routes/payrollRoutes"))
 app.use("/api/dashboard", require("./routes/dashboardRoutes"))
 
+app.use("/api/notices", require("./routes/noticeRoutes"))
+
 const PORT = process.env.PORT || 5000
 
 mongoose
