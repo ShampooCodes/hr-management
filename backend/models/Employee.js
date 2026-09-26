@@ -29,6 +29,11 @@ const employeeSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+
+    profilePicture: {
+        type: String,
+        default: "",
+    }
 });
 
 module.exports = mongoose.model("Employee", employeeSchema); 

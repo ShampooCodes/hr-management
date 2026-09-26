@@ -15,6 +15,7 @@ app.use("/api/attendance", require("./routes/attendanceRoutes"))
 app.use("/api/leaves", require("./routes/leaveRoutes"))
 app.use("/api/payroll", require("./routes/payrollRoutes"))
 app.use("/api/dashboard", require("./routes/dashboardRoutes"))
+app.use("/uploads", express.static("uploads"))
 
 app.use("/api/notices", require("./routes/noticeRoutes"))
 
