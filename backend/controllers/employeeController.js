@@ -2,7 +2,19 @@ const Employee = require("../models/Employee")
 
 const getAllEmployees = async (req, res) => {
     try {
-        const employees = await Employee.find().select("-password")
+        const { department, designation} = req.query
+
+        const filter = {}
+
+        if (department) {
+            filter.department = department
+        }
+
+        if (designation) {
+            filter.designation = designation
+        }
+        
+        const employees = await Employee.find(filter).select("-password")
         res.status(200).json(employees)
     } catch (error) {
         console.log(error)
