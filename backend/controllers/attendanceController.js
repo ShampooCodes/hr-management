@@ -74,9 +74,20 @@ const getMyAttendance = async (req, res) => {
 
 const getAllAttendance = async (req, res) => {
     try {
-        const records = await Attendance.find()
-        .populate("employee", "fullName email department")
-        .sort({ date: -1 })
+        const { fromDate, toDate } = req.query
+
+        const filter = {}
+
+        if (fromDate && toDate) {
+            filter.date = {
+                $gte: new Date(fromDate),
+                $lte: new Date(toDate),
+            }
+        }
+
+        const records = await Attendance.find(filter)
+            .populate("employee", "fullName email department")
+            .sort({ date: -1 })
 
         res.status(200).json(records)
     } catch (error) {

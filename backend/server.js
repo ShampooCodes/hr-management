@@ -13,6 +13,11 @@ app.use("/api/auth", require("./routes/authRoutes"))
 app.use("/api/employees", require("./routes/employeeRoutes"))
 app.use("/api/attendance", require("./routes/attendanceRoutes"))
 app.use("/api/leaves", require("./routes/leaveRoutes"))
+app.use("/api/payroll", require("./routes/payrollRoutes"))
+app.use("/api/dashboard", require("./routes/dashboardRoutes"))
+app.use("/uploads", express.static("uploads"))
+
+app.use("/api/notices", require("./routes/noticeRoutes"))
 
 const PORT = process.env.PORT || 5000
 
