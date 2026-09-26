@@ -1,16 +1,16 @@
 const express = require("express")
 const router = express.Router()
+const { verifyToken, isAdmin } = require("../middleware/authMiddleware")
+const {
+  applyLeave,
+  getMyLeaves,
+  getAllLeaves,
+  updateLeaveStatus,
+} = require("../controllers/leaveController")
 
-router.post("/", (req, res) => {
-  res.json({message: "Apply leave"})
-})
-
-router.get("/", (req, res) => {
-  res.json({message: "Get leaves"})
-})
-
-router.patch("/:id", (req, res) => {
-  res.json({message: "Update leave status"})
-})
+router.post("/apply", verifyToken, applyLeave)
+router.get("/my-leaves", verifyToken, getMyLeaves)
+router.get("/", verifyToken, isAdmin, getAllLeaves)
+router.put("/:id/status", verifyToken, isAdmin, updateLeaveStatus)
 
 module.exports = router
