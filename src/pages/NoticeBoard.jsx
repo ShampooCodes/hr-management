@@ -49,7 +49,7 @@ function NoticeBoard(){
                             <div key={notice._id} className="border border-gray-700 rounded-xl px-5 py-4">
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="border border-gray-600 rounded-full p-2">
-                                        <Megaphone className="text-white" size={16} strokeWidth={.5} />
+                                        <Megaphone className="text-white" size={16} strokeWidth={1.5} />
                                     </div>
                                     <p className="text-white text-sm font-medium">{notice.title}</p>
                                 </div>
