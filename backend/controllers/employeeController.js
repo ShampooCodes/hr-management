@@ -2,7 +2,19 @@ const Employee = require("../models/Employee")
 
 const getAllEmployees = async (req, res) => {
     try {
-        const employees = await Employee.find().select("-password")
+        const { department, designation} = req.query
+
+        const filter = {}
+
+        if (department) {
+            filter.department = department
+        }
+
+        if (designation) {
+            filter.designation = designation
+        }
+        
+        const employees = await Employee.find(filter).select("-password")
         res.status(200).json(employees)
     } catch (error) {
         console.log(error)
@@ -65,9 +77,32 @@ const deleteEmployee = async(req, res) => {
     }
 }
 
+const uploadProfilePicture = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: "Please upload an image"})
+        }
+
+        const employeeId = req.user.id
+        const imagePath = `/uploads/${req.file.filename}`
+
+        const updatedEmployee = await Employee.findByIdAndUpdate(
+            employeeId,
+            { profilePicture: imagePath },
+            {new: true}
+
+        ).select("-password")
+        res.status(200).json({ message: "Profile picture uploaded successfully"})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "Something went wrong on the server"})
+    }
+}
+
 module.exports = {
     getAllEmployees,
     getSingleEmployee,
     updateEmployee,
     deleteEmployee,
+    uploadProfilePicture,
 }
