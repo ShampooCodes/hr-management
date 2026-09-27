@@ -58,12 +58,12 @@ function MyPayroll() {
                                             {rec.month} {rec.year}
                                         </p>
                                     </div>
-                                    <p className="text-white text-lg font-semibold">₹{rec.netSalary}</p>
+                                    <p className="text-white text-lg font-semibold">Rs: {rec.netSalary}</p>
                                 </div>
                                 <div className="grid grid-cols-3 gap-4 text-xs text-gray-500 border-t border-gray-800 pt-3">
                                     <div>
                                         <p> Basic Salary</p>
-                                        <p className="text-gray-300 mt-1">₹{rec.basicSalary}</p>
+                                        <p className="text-gray-300 mt-1">Rs: {rec.basicSalary}</p>
                                     </div>
                                     <div>
                                         <p>Leaves Taken</p>
@@ -71,7 +71,7 @@ function MyPayroll() {
                                     </div>
                                     <div>
                                         <p>Deduction</p>
-                                        <p className="text-gray-300 mt-1">₹{rec.deduction}</p>
+                                        <p className="text-gray-300 mt-1">Rs: {rec.deduction}</p>
                                     </div>
                                 </div>
                             </div>

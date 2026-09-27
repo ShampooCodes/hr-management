@@ -40,7 +40,6 @@ function Payroll() {
 
     const handleGenerate = async (e) => {
         e.preventDefault()
-        console.log("Form submitted!", { employeeId, month, year, basicSalary })
         setSubmitting(true)
         setMessage("")
         try {
@@ -52,7 +51,6 @@ function Payroll() {
             setBasicSalary("")
             fetchData()
         } catch (error) {
-            console.log("ERROR:", error)
             const msg = error.response?.data?.message || "Failed to generate payroll"
             setMessage(msg)
         } finally {

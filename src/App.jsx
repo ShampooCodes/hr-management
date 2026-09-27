@@ -8,7 +8,8 @@ import MyLeaves from "./pages/MyLeaves";
 import MyPayroll from "./pages/MyPayroll";
 import NoticeBoard from "./pages/NoticeBoard";
 import LeaveApproval from "./pages/LeaveApproval";
-import Payroll from "./pages/Payroll"
+import Payroll from "./pages/Payroll";
+import PostNotice from "./pages/PostNotice";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/employee/notices" element={<NoticeBoard />} />
       <Route path="/admin/leaves" element={<LeaveApproval />} />
       <Route path="/admin/payroll" element={<Payroll />} />
+      <Route path="/admin/notices" element={<PostNotice />} />
     </Routes>
   )
 }

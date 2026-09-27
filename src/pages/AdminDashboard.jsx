@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Users, ClipboardList, Wallet } from "lucide-react"
+import { Users, ClipboardList, Wallet, Megaphone } from "lucide-react"
 
 function AdminDashboard() {
     const navigate= useNavigate()
@@ -23,6 +23,12 @@ function AdminDashboard() {
             icon: Wallet,
             path: "/admin/payroll",
         },
+        {
+            title: "Post Notice",
+            desc: "Send announcements to employees",
+            icon: Megaphone,
+            path: "/admin/notices",
+         },
     ]
     return (
         <div className="min-h-screen w-full bg-black px-6 py-10">
