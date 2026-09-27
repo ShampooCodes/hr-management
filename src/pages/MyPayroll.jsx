@@ -75,9 +75,8 @@ function MyPayroll() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
                 )}
             </div>
         </div>
