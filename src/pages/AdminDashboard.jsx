@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import { Users, ClipboardList, Wallet, Megaphone, CheckSquare } from "lucide-react"
+import { Users, ClipboardList, Wallet, Megaphone, CheckSquare, LogOut } from "lucide-react"
 
 function AdminDashboard() {
     const navigate= useNavigate()
+
+    const handleLogout = () => {
+        localStorage.clear()
+        navigate("/")
+    }
     
     const cards= [
         {
@@ -39,7 +44,16 @@ function AdminDashboard() {
     return (
         <div className="min-h-screen w-full bg-black px-6 py-10">
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-2xl font-semibold text-white mb-10 tracking-wide">Admin Dashboard</h1>
+                <div className="flex items-center justify-between mb-10">
+                    <h1 className="text-2xl font-semibold text-white mb-10 tracking-wide">Admin Dashboard</h1>
+                    <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition"
+                    >
+                        <LogOut size={16} strokeWidth={1.5} />
+                        Logout
+                    </button>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {cards.map((card) => {

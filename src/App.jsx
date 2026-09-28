@@ -12,24 +12,29 @@ import Payroll from "./pages/Payroll";
 import PostNotice from "./pages/PostNotice";
 import AssignTask from "./pages/AssignTask";
 import MyTasks from "./pages/MyTasks";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+const admin = (page)=> <ProtectedRoute allowedRole="admin">{page}</ProtectedRoute>
+const employee = (page)=> <ProtectedRoute allowedRole="employee">{page}</ProtectedRoute>
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/employee" element={<EmployeeDashboard />} />
-      <Route path="/admin/employees" element={<EmployeeManagement />} />
-      <Route path="/employee" element={<EmployeeDashboard />} />
-      <Route path="/employee/attendance" element={<MyAttendance />} />
-      <Route path="/employee/leaves" element={<MyLeaves />} />
-      <Route path="/employee/payroll" element={<MyPayroll />} />
-      <Route path="/employee/notices" element={<NoticeBoard />} />
-      <Route path="/admin/leaves" element={<LeaveApproval />} />
-      <Route path="/admin/payroll" element={<Payroll />} />
-      <Route path="/admin/notices" element={<PostNotice />} />
-      <Route path="/admin/tasks" element={<AssignTask />} />
-      <Route path="/employee/tasks" element={<MyTasks />} />
+
+      <Route path="/admin" element={admin(<AdminDashboard />)} />
+      <Route path="/admin/employees" element={admin(<EmployeeManagement />)} />
+      <Route path="/admin/leaves" element={admin(<LeaveApproval />)} />
+      <Route path="/admin/payroll" element={admin(<Payroll />)} />
+      <Route path="/admin/notices" element={admin(<PostNotice />)} />
+      <Route path="/admin/tasks" element={admin(<AssignTask />)} />
+
+      <Route path="/employee" element={employee(<EmployeeDashboard />)} />
+      <Route path="/employee/attendance" element={employee(<MyAttendance />)} />
+      <Route path="/employee/leaves" element={employee(<MyLeaves />)} />
+      <Route path="/employee/payroll" element={employee(<MyPayroll />)} />
+      <Route path="/employee/tasks" element={employee(<MyTasks />)} />
+      <Route path="/employee/notices" element={employee(<NoticeBoard />)} />
     </Routes>
   )
 }

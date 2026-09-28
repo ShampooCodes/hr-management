@@ -1,11 +1,16 @@
 import {useEffect, useState } from "react"
 import {useNavigate } from "react-router-dom"
 import {getEmployeeStatsApi } from "../api/dashboardApi"
-import {Clock, ClipboardList, Wallet, CheckSquare, Bell} from "lucide-react"
+import {Clock, ClipboardList, Wallet, CheckSquare, Bell, LogOut} from "lucide-react"
 
 
 function EmployeeDashboard() {
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/")
+  }
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
   
@@ -60,9 +65,18 @@ function EmployeeDashboard() {
   return (
     <div className="min-h-screen w-full bg-black px-6 py-10">
       <div className="max-w-4xl mx-auto">
+        <div className="flex items-center justify-between mb-10">
           <h1 className="text-2xl font-semibold text-white mb-6 tracking-wide">
             Employee Dashboard
           </h1>
+          <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition"
+          >
+              <LogOut size={16} strokeWidth={1.5} />
+              Logout
+          </button>
+        </div>
           {!loading && stats && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               <div className="border border-gray-700 rounded-xl p-4">
