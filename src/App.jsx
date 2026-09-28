@@ -13,6 +13,7 @@ import PostNotice from "./pages/PostNotice";
 import AssignTask from "./pages/AssignTask";
 import MyTasks from "./pages/MyTasks";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AddEmployee from "./pages/AddEmployee";
 
 const admin = (page)=> <ProtectedRoute allowedRole="admin">{page}</ProtectedRoute>
 const employee = (page)=> <ProtectedRoute allowedRole="employee">{page}</ProtectedRoute>
@@ -21,9 +22,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-
+      
       <Route path="/admin" element={admin(<AdminDashboard />)} />
       <Route path="/admin/employees" element={admin(<EmployeeManagement />)} />
+      <Route path="/admin/employees/add" element={admin(<AddEmployee />)} />
       <Route path="/admin/leaves" element={admin(<LeaveApproval />)} />
       <Route path="/admin/payroll" element={admin(<Payroll />)} />
       <Route path="/admin/notices" element={admin(<PostNotice />)} />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteEmployeeApi, getAllEmployees } from "../api/employeeApi";
-import { ArrowLeft, Trash2, User, Mail, Building2 } from "lucide-react"
+import { ArrowLeft, Trash2, User, Mail, Building2, UserPlus } from "lucide-react"
 
 function EmployeeManagement() {
     const navigate = useNavigate()
@@ -47,16 +47,25 @@ function EmployeeManagement() {
     return (
         <div className="min-h-screen w-full bg-black px-6 py-8">
             <div className="max-w-4xl mx-auto">
-                <div className="flex items-center gap-4 mb-8">
+                <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-4">
+                        <button 
+                            onClick={() => navigate("/admin")}
+                            className="text-gray-400 hover:text-white transition"
+                        >
+                            <ArrowLeft size={22} strokeWidth={1.5} />
+                        </button>
+                        <h1 className="text-2xl font-semibold text-white tracking-wide">
+                            Employee Management
+                        </h1>
+                    </div>
                     <button 
-                        onClick={() => navigate("/admin")}
-                        className="text-gray-400 hover:text-white transition"
+                        onClick={() => navigate("/admin/employees/add")}
+                        className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition"
                     >
-                        <ArrowLeft size={22} strokeWidth={1.5} />
+                        <UserPlus size={16} strokeWidth={1.5} />
+                        Add Employee
                     </button>
-                    <h1 className="text-2xl font-semibold text-white tracking-wide">
-                        Employee Management
-                    </h1>
                 </div>
                 {error && (
                     <p className="text-red-500 text-sm mb-4">{error}</p>
