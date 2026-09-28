@@ -10,6 +10,8 @@ import NoticeBoard from "./pages/NoticeBoard";
 import LeaveApproval from "./pages/LeaveApproval";
 import Payroll from "./pages/Payroll";
 import PostNotice from "./pages/PostNotice";
+import AssignTask from "./pages/AssignTask";
+import MyTasks from "./pages/MyTasks";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
       <Route path="/admin/leaves" element={<LeaveApproval />} />
       <Route path="/admin/payroll" element={<Payroll />} />
       <Route path="/admin/notices" element={<PostNotice />} />
+      <Route path="/admin/tasks" element={<AssignTask />} />
+      <Route path="/employee/tasks" element={<MyTasks />} />
     </Routes>
   )
 }
